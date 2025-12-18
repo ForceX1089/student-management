@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "forcex0/student-management"
+        DOCKER_BUILDKIT = "0"
     }
 
     stages {

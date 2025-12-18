@@ -33,6 +33,23 @@ pipeline {
                 sh "docker push $DOCKER_IMAGE"
             }
         }
+
+        stage('Deploy MySQL on K8s') {
+            steps {
+                sh '''
+                  kubectl apply -f k8s/mysql.yaml -n devops
+                '''
+            }
+        }
+
+        stage('Deploy Spring Boot on K8s') {
+            steps {
+                sh '''
+                  kubectl apply -f k8s/spring.yaml -n devops
+                  kubectl rollout restart deployment spring-app -n devops
+                '''
+            }
+        }
     }
 
     post {

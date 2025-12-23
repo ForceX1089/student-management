@@ -8,6 +8,13 @@ pipeline {
 
     stages {
 
+
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar' 
+            }
+        }
+
         stage('Build Maven') {
             steps {
                 sh "mvn clean package -DskipTests"

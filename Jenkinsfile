@@ -9,9 +9,11 @@ pipeline {
     stages {
 
 
-        stage('MVN SONARQUBE') {
+       stage('MVN SONARQUBE') {
             steps {
-                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=$Rayan26695877'
+                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.token=sqa_bf2c984b82cbc07ae3879f3ec047bc468ecbf458'
             }
         }
 
